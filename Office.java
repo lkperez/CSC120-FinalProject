@@ -6,20 +6,20 @@ public class Office extends Rooms {
         super(name, description, objects);
     }
 
-    private static void desk(){
+    
+    public static void desk(){
         System.out.println("You have looked into the drawer of the desk but there is nothing there!");
     }
 
-    private static void chair(){
-        System.out.println("You have looked under the chair. This is the code: 123");
+    public static void chair(){
+        System.out.println("You have looked under the chair. There are the numbers 1,2,3");
     }
 
-    private static void safe(){
+    public static void safe(){
         System.out.println("Enter the passcode to unlock the safe and get the key!");
     }
-    
 
-    private static void door(){
+    public static void door(){
         System.out.println("You need a key to open the door. Open it using the key");
     }
 
@@ -69,6 +69,12 @@ public class Office extends Rooms {
             case 7: quit();
                     break;
         }
+        scan.close();
+
+    }
+}
+/* 
+        System.out.println("Remember you need a code to unlock the safe. Its hidden where a person can rest");
     }
 
 }

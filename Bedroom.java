@@ -28,11 +28,11 @@ public class Bedroom extends Rooms {
     }
 
     public static void help(){
-        System.out.println("Remember, you need a code to unlock the lock box. It's hidden in something you use for school!");
+        System.out.println("Remember, you need a code to unlock the box. It's hidden in something you use for school!");
     }
 
     public static void quit(){
-        System.out.println("You have quit the came. We hope you can come back again to play!");
+        System.out.println("You have quit the came. We hope you can come back and play again!");
     }
 
 

@@ -10,7 +10,7 @@ public class Bathroom extends Rooms {
     }
 
     public static void medicineCabinet(){
-        System.out.println("You have tried looking in the cabinet but you cannot get in. Enter the safeword to access the medicine cabinet.");
+        System.out.println("You have tried looking in the cabinet but you cannot open it. Enter the safeword to access the medicine cabinet.");
     }
 
     public static void toiletSeat(){
