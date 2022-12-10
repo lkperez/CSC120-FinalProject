@@ -6,21 +6,35 @@ public class Office extends Rooms {
         super(name, description, objects);
     }
 
-    private static void desk(){
+    public static void desk(){
         System.out.println("You have looked into the drawer of the desk but there is nothing there!");
     }
 
-    private static void chair(){
+    public static void chair(){
         System.out.println("You have looked under the chair. There are the numbers 1,2,3");
     }
 
-    private static void safe(){
+    public static void safe(){
         System.out.println("Enter the passcode to unlock the safe and get the key!");
     }
 
-    private static void door(){
+    public static void door(){
         System.out.println("You need a key to open the door. Open it using the key");
     }
+
+    public static void printInventory(){
+        System.out.println("Here is your inventory:");
+    }
+
+    public static void help(){
+        System.out.println("Remember you need a code to unlock the safe. Its hidden where a person can rest");
+    }
+
+    public static void quit(){
+        System.out.println("You have quit the game. We hope you come back again to play");
+    }
+
+
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -47,7 +61,12 @@ public class Office extends Rooms {
                     break;
             case 4: door();
                     break;
-         
+            case 5: printInventory();
+                    break;
+            case 6: help();
+                    break;
+            case 7: quit();
+                    break;
         }
         scan.close();
 
@@ -55,3 +74,4 @@ public class Office extends Rooms {
 
 
 }
+
