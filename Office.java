@@ -5,9 +5,7 @@ public class Office extends Rooms {
 
     public Office(String name, String description, String objects) {
         super(name, description, objects);
-    
     }
-
     
     public static void desk(){
         System.out.println("You have looked into the drawer of the desk but there is nothing there!");
@@ -22,7 +20,7 @@ public class Office extends Rooms {
     }
 
     public static void door(){
-        System.out.println("You need a key to open the door. Open it using the key");
+        System.out.println("You need a key to open the door. Open it using the key.");
     }
 
     public static void printInventory(){
@@ -37,8 +35,8 @@ public class Office extends Rooms {
         System.out.println("You have quit the game. We hope you can come back again to play!");
     }
 
-    public static void menu(){
-        System.out.println("What do you want to do?\n"
+    public static void menu(){   
+       System.out.println("What do you want to do?\n"
         + "1. Look in the drawer of the desk\n"
         + "2. Look under the chair\n"
         + "3. Open the safe\n"
@@ -47,39 +45,41 @@ public class Office extends Rooms {
         + "6. Get help\n"
         + "7. Quit game\n");
     }
- 
 
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+
+    public static void main(String[] args) {            
+
+        while(true){
         menu();
+        Scanner scan = new Scanner(System.in);
         int answer = scan.nextInt();
-
-        while(answer > 6 || answer < 1) {
+        while(answer > 7 || answer < 1) {
             System.out.println("pick one of the options");
             answer = scan.nextInt();
         }
+
         switch(answer) {
-            case 1: desk();
-                    break;
-            case 2: chair();
-                    break;
-            case 3: safe();
-                    break;
-            case 4: door();
-                    break;
-            case 5: printInventory();
-                    break;
-            case 6: help();
-                    break;
-            case 7: quit();
-                    break;
+
+        case 1: desk();
+                break;
+        case 2: chair();
+                break;
+        case 3: safe();
+                break;
+        case 4: door();
+                break;
+        case 5: printInventory();
+                break;
+        case 6: help();
+                break;
+        case 7: quit();
+                return;
         }
-        Scanner safe = new Scanner(System.in);
-        Integer response = safe.nextInt();        
+
+        int response = scan.nextInt();        
         while (response == 123){
         if (response == 123 || attempts < 3){
             System.out.println("Yay! You have unlocked the safe and now have the key!");
-            menu();
             break;
         }    
 
@@ -88,16 +88,15 @@ public class Office extends Rooms {
                 attempts += 1;
            if(attempts > 3) {
                 System.out.println("Too many attempts! Try and find the code and come back!");
-                menu();
                 break;
             } }
         }
-        safe.close();   
 
-        scan.close();
+
+   }
 
     }
-    }
+}
 
 /* 
         System.out.println("Remember you need a code to unlock the safe. Its hidden where a person can rest");
@@ -126,5 +125,37 @@ public class Office extends Rooms {
                 } else {
                     // Print name
                     System.out.println("You have chosen " + name + "!");
+
+
                 }
-            */               
+                        
+
+                
+Scanner scan = new Scanner(System.in);
+        menu();
+        int answer = scan.nextInt();
+
+        while(answer > 7 || answer < 1) {
+            System.out.println("pick one of the options");
+            answer = scan.nextInt();
+        }
+        switch(answer) {
+            case 1: desk();
+                    break;
+            case 2: chair();
+                    break;
+            case 3: safe();
+                    break;
+            case 4: door();
+                    break;
+            case 5: printInventory();
+                    break;
+            case 6: help();
+                    break;
+            case 7: quit();
+                    break;
+        }
+
+
+
+                */               
