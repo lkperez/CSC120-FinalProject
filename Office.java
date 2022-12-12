@@ -16,7 +16,7 @@ public class Office extends Rooms {
     }
 
     public static void safe(){
-        System.out.println("Enter the passcode to unlock the safe and get the key!");
+      //  System.out.println("Enter the passcode to unlock the safe and get the key!");
     }
 
     public static void door(){
@@ -69,10 +69,23 @@ public class Office extends Rooms {
             case 7: quit();
                     break;
         }
+        Scanner safe = new Scanner(System.in);
+        System.out.println("Enter the passcode to unlock the safe and get the key!");
+        Integer response = safe.nextInt();        
+        while (response == 123)
+        if (response == 123){
+            System.out.println("Yay! You have unlocked the safe and now have the key!");}
+          else {
+                System.out.println("Wrong code, try again!");
+            }
+
+        safe.close();
+
         scan.close();
 
     }
-}
+    }
+
 /* 
         System.out.println("Remember you need a code to unlock the safe. Its hidden where a person can rest");
     }
