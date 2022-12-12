@@ -1,9 +1,11 @@
 import java.util.Scanner;
 
 public class Office extends Rooms {
+    static int attempts;
 
     public Office(String name, String description, String objects) {
         super(name, description, objects);
+    
     }
 
     
@@ -12,11 +14,11 @@ public class Office extends Rooms {
     }
 
     public static void chair(){
-        System.out.println("You have looked under the chair. There are the numbers 1,2,3");
+        System.out.println("You have looked under the chair. Here is the code: 123");
     }
 
     public static void safe(){
-      //  System.out.println("Enter the passcode to unlock the safe and get the key!");
+       System.out.println("Enter the passcode to unlock the safe and get the key!");
     }
 
     public static void door(){
@@ -32,13 +34,10 @@ public class Office extends Rooms {
     }
 
     public static void quit(){
-        System.out.println("You have quit the came. We hope you can come back again to play!");
+        System.out.println("You have quit the game. We hope you can come back again to play!");
     }
 
- 
-
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+    public static void menu(){
         System.out.println("What do you want to do?\n"
         + "1. Look in the drawer of the desk\n"
         + "2. Look under the chair\n"
@@ -47,6 +46,12 @@ public class Office extends Rooms {
         + "5. Look through inventory\n"
         + "6. Get help\n"
         + "7. Quit game\n");
+    }
+ 
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        menu();
         int answer = scan.nextInt();
 
         while(answer > 6 || answer < 1) {
@@ -70,16 +75,24 @@ public class Office extends Rooms {
                     break;
         }
         Scanner safe = new Scanner(System.in);
-        System.out.println("Enter the passcode to unlock the safe and get the key!");
         Integer response = safe.nextInt();        
-        while (response == 123)
-        if (response == 123){
-            System.out.println("Yay! You have unlocked the safe and now have the key!");}
-          else {
-                System.out.println("Wrong code, try again!");
-            }
+        while (response == 123){
+        if (response == 123 || attempts < 3){
+            System.out.println("Yay! You have unlocked the safe and now have the key!");
+            menu();
+            break;
+        }    
 
-        safe.close();
+          while (response != 123 || attempts < 3) {
+                System.out.println("Wrong code, try again!");
+                attempts += 1;
+           if(attempts > 3) {
+                System.out.println("Too many attempts! Try and find the code and come back!");
+                menu();
+                break;
+            } }
+        }
+        safe.close();   
 
         scan.close();
 
