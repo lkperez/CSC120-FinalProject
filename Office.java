@@ -9,15 +9,18 @@ public class Office extends Rooms {
         key = false;
 
     }
-    
+
+    //prints out the desk statement if you choose the desk option in main  
     public static void desk(){
         System.out.println("You have looked into the drawer of the desk but there is nothing there!\n");
     }
 
+    //prints out the chair statement if you choose the chair option in main
     public static void chair(){
         System.out.println("You have looked under the chair. Here is the code: 123\n");
     }
 
+    //prints the safe statement and will ask you for the code and if you have the safe code, you can tell safe and it will give you the key
     public static void safe(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter the passcode to unlock the safe and get the key!\n");
@@ -38,40 +41,44 @@ public class Office extends Rooms {
        }
     }
 
-
+    //prints out different door statements depending on if you have the key or not
+    //problem - haven't made it so it decides if its false or not
     public static void door(){
        // System.out.println("You need a key to open the door. Open it using the key.");       
        if (key = true){
         System.out.println("Congrats! You've completed the Escape Room!\n");
-        System.out.println("Which room would you like to go to?");
        }
         if (key = false){
             System.out.println("Sorry, you need the key! Go find the key!\n");
         }
     }
 
+    //prints inventory when you select inventory
     public static void printInventory(){
         System.out.println("Here is your inventory:\n");
     }
 
+    //prints help statement and gives you a hint
     public static void help(){
         System.out.println("Remember, you need a code to unlock the safe. It's hidden where a person can rest! \n");
     }
 
+    //prints quit and ends the program
     public static void quit(){
         System.out.println("You have quit the game. We hope you can come back again to play!\n");
     }
 
+    //tells you to hit w so that it will move on to the menu 
     public static void wToContinue(Scanner scnr){
         String answer = "";
-        while(!answer.equalsIgnoreCase("w \n")){
-            System.out.println("Press 'w' to continue. \n");
+        while(!answer.equalsIgnoreCase("w")){
+            System.out.println("Press 'w' to continue.\n");
             answer = scnr.nextLine();
         }
     }
-
+    //our standard menu - asks you to select a number
     public static void menu(){   
-       System.out.println("What do you want to do?\n"
+       System.out.println("What do you want to do? Select a number below:\n"
         + "1. Look in the drawer of the desk\n"
         + "2. Look under the chair\n"
         + "3. Open the safe\n"
@@ -89,8 +96,9 @@ public class Office extends Rooms {
         menu();
         Scanner scan = new Scanner(System.in);
         int answer = scan.nextInt();
+        //requires you to pick one of the annswer options, can't pick another number 
         while(answer > 7 || answer < 1) {
-            System.out.println("pick one of the options");
+            System.out.println("Please pick one of the options.");
             answer = scan.nextInt();
             scan.nextLine();
         }
