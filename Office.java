@@ -7,6 +7,7 @@ public class Office extends Rooms {
     public Office(String name, String description, String objects) {
         super(name, description, objects);
         key = false;
+        attempts = 3;
 
     }
 
@@ -19,27 +20,46 @@ public class Office extends Rooms {
     public static void chair(){
         System.out.println("You have looked under the chair. Here is the code: 123\n");
     }
-
     //prints the safe statement and will ask you for the code and if you have the safe code, you can tell safe and it will give you the key
     public static void safe(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter the passcode to unlock the safe and get the key!\n");
         int response = scan.nextInt();        
-        while (response == 123){
-        if (response == 123 || attempts < 3){
+        while (attempts < 4){
+        response = scan.nextInt();
+        if (response == 123){
            System.out.println("Yay! You have unlocked the safe and now have the key!\n");
            break;
-       }    
+         } 
+         else {
+            System.out.println("Please try again!");
+            attempts += 1;
+            break;
+         }
+        }
+        while (attempts > 4){
+            response = scan.nextInt();
+            System.out.println("Too many attempts! Try and find the code and come back! \n");
+            break;
+         }
+     //    else{
+       //     System.out.println("Error. Answer not found.");}
+       //  else {
+         //   System.out.println("Sorry, try again!");
+           // break;}
+        //while (attempts > 3){    
+          //  System.out.println("Too many attempts! Try and find the code and come back!\n");
+            //break;
+        //}
 
-         while (response != 123 || attempts < 3) {
-               System.out.println("Wrong code, try again!\n");
-               attempts += 1;
-          if(attempts > 3) {
-               System.out.println("Too many attempts! Try and find the code and come back!\n");
-               break;
-           } }
-       }
-    }
+            } 
+        
+
+      //   while (response != 123 || attempts < 3) {
+        //       System.out.println("Wrong code, try again!\n");
+             
+       
+    
 
     //prints out different door statements depending on if you have the key or not
     //problem - haven't made it so it decides if its false or not
