@@ -2,37 +2,72 @@ import java.util.Scanner;
 
 public class Office extends Rooms {
     static int attempts;
+    static boolean key;
 
     public Office(String name, String description, String objects) {
         super(name, description, objects);
+        key = false;
+
     }
     
     public static void desk(){
-        System.out.println("You have looked into the drawer of the desk but there is nothing there!");
+        System.out.println("You have looked into the drawer of the desk but there is nothing there!\n");
     }
 
     public static void chair(){
-        System.out.println("You have looked under the chair. Here is the code: 123");
+        System.out.println("You have looked under the chair. Here is the code: 123\n");
     }
 
     public static void safe(){
-       System.out.println("Enter the passcode to unlock the safe and get the key!");
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the passcode to unlock the safe and get the key!\n");
+        int response = scan.nextInt();        
+        while (response == 123){
+        if (response == 123 || attempts < 3){
+           System.out.println("Yay! You have unlocked the safe and now have the key!\n");
+           break;
+       }    
+
+         while (response != 123 || attempts < 3) {
+               System.out.println("Wrong code, try again!\n");
+               attempts += 1;
+          if(attempts > 3) {
+               System.out.println("Too many attempts! Try and find the code and come back!\n");
+               break;
+           } }
+       }
     }
 
+
     public static void door(){
-        System.out.println("You need a key to open the door. Open it using the key.");
+       // System.out.println("You need a key to open the door. Open it using the key.");       
+       if (key = true){
+        System.out.println("Congrats! You've completed the Escape Room!\n");
+        System.out.println("Which room would you like to go to?");
+       }
+        if (key = false){
+            System.out.println("Sorry, you need the key! Go find the key!\n");
+        }
     }
 
     public static void printInventory(){
-        System.out.println("Here is your inventory:");
+        System.out.println("Here is your inventory:\n");
     }
 
     public static void help(){
-        System.out.println("Remember, you need a code to unlock the sage. It's hidden where a person can rest!");
+        System.out.println("Remember, you need a code to unlock the safe. It's hidden where a person can rest! \n");
     }
 
     public static void quit(){
-        System.out.println("You have quit the game. We hope you can come back again to play!");
+        System.out.println("You have quit the game. We hope you can come back again to play!\n");
+    }
+
+    public static void wToContinue(Scanner scnr){
+        String answer = "";
+        while(!answer.equalsIgnoreCase("w \n")){
+            System.out.println("Press 'w' to continue. \n");
+            answer = scnr.nextLine();
+        }
     }
 
     public static void menu(){   
@@ -47,6 +82,7 @@ public class Office extends Rooms {
     }
 
 
+
     public static void main(String[] args) {            
 
         while(true){
@@ -56,8 +92,8 @@ public class Office extends Rooms {
         while(answer > 7 || answer < 1) {
             System.out.println("pick one of the options");
             answer = scan.nextInt();
+            scan.nextLine();
         }
-
         switch(answer) {
 
         case 1: desk();
@@ -73,24 +109,10 @@ public class Office extends Rooms {
         case 6: help();
                 break;
         case 7: quit();
-                return;
+                System.exit(1);
         }
+        wToContinue(scan);
 
-        int response = scan.nextInt();        
-        while (response == 123){
-        if (response == 123 || attempts < 3){
-            System.out.println("Yay! You have unlocked the safe and now have the key!");
-            break;
-        }    
-
-          while (response != 123 || attempts < 3) {
-                System.out.println("Wrong code, try again!");
-                attempts += 1;
-           if(attempts > 3) {
-                System.out.println("Too many attempts! Try and find the code and come back!");
-                break;
-            } }
-        }
 
 
    }
