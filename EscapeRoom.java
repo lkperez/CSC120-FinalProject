@@ -50,6 +50,16 @@ public class EscapeRoom {
             input = scnr.nextLine();
         }
     } 
+
+    /**
+     * The direction users can go in 
+     */
+    public static void directions(){
+        System.out.println("Which room do you want to start in?\n"
+            + "1.office\n"
+            + "2.bathroom\n"
+            + "3.bedroom\n");
+    }
     public static void main(String[] args) {
         //Opening prompt for escape room
             System.out.println("Welcome to the Escape Room!");
@@ -73,25 +83,26 @@ public class EscapeRoom {
                 break;
             } // End of conditional
         } // End of while loop
-            int answer = scan.nextInt();
-            System.out.println("Which room do you want to start in?\n"
-            + "1.office\n"
-            + "2.bathroom\n"
-            + "3.bedroom\n");
-            while(answer > 4 || answer < 1) {
-                System.out.println("pick the available directions");
-                answer = scan.nextInt();
-            }
+            //Ask player for which room they want to start in
 
-            switch(answer) {
-            case 1: office();
-                    break;
-            case 2: bathroom();
-                    break;
-            case 3: bedroom();
-                    break;
-            }
-
-           scan.close();
+            while(true){
+                directions();
+                scan = new Scanner(System.in);
+                int answer = scan.nextInt();
+                //requires you to pick one of the annswer options, can't pick another number 
+                while(answer > 4 || answer < 1) {
+                    System.out.println("Please pick one of the options.");
+                    answer = scan.nextInt();
+                    scan.nextLine();
+                }
+                switch(answer) {
+                case 1: office();
+                        break;
+                case 2: bathroom();
+                        break;
+                case 3: bedroom();
+                        break;
+                    } 
+         }
     }
 }
