@@ -87,30 +87,6 @@ public class Bathroom extends Rooms {
         System.out.println("You have quit the game. We hope you can come back again to play!");
     }
 
-
-    /**
-     * prints the safe statement and will ask you for the code and if you have the safe code, you can tell safe and it will give you the key
-     */
-    public static void safe(){
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Enter the passcode to unlock the safe and get the key!\n");
-        int response = scan.nextInt();        
-        while (response == 420){
-        if (response == 420 || attempts < 3){
-           System.out.println("Yay! You have unlocked the safe and now have the key!\n");
-           break;
-       }    
-
-         while (response != 123 || attempts < 3) {
-               System.out.println("Wrong code, try again!\n");
-               attempts += 1;
-          if(attempts > 3) {
-               System.out.println("Too many attempts! Try and find the code and come back!\n");
-               break;
-           } }
-       }
-    }
-
     /**
      * tells you to hit w so that it will move on to the menu
      * @param scnr takes in user input
@@ -118,7 +94,7 @@ public class Bathroom extends Rooms {
     public static void wToContinue(Scanner scnr){
         String answer = "";
         while(!answer.equalsIgnoreCase("w")){
-            System.out.println("Press 'w' to continue.\n");
+            System.out.println("Press 'w' to continue.");
             answer = scnr.nextLine();
         }
     }
@@ -131,11 +107,10 @@ public class Bathroom extends Rooms {
          + "1. Look in the shower\n"
          + "2. Look in the medicine cabinet\n"
          + "3. Look in the toilet\n"
-         + "4. Open the safe\n"
-         + "5. Open the door\n"
-         + "6. Look through inventory\n"
-         + "7. Get help\n"
-         + "8. Quit game\n");
+         + "4. Open the door\n"
+         + "5. Look through inventory\n"
+         + "6. Get help\n"
+         + "7. Quit game\n");
      }
 
 
@@ -159,15 +134,13 @@ public class Bathroom extends Rooms {
                 break;
         case 3: toiletSeat();;
                 break;
-        case 4: safe();;
+        case 4: door();
                 break;
-        case 5: door();
+        case 5: printInventory();
                 break;
-        case 6: printInventory();
+        case 6: help();
                 break;
-        case 7: help();
-                break;
-        case 8: quit();
+        case 7: quit();
                 System.exit(1);
         }
             wToContinue(scan);
