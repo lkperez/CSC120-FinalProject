@@ -1,15 +1,17 @@
 import java.util.Scanner;
 public class Bathroom extends Rooms {
-
-     /** int to store amount of attempts user makes unlocking the safe */
-     static int attempts;
-
-    /** boolean to store wether or not the user has the key */
+   
+    /** int to store amount of attempts user makes unlocking the safe */
+    static int attempts;
+    
+    /** boolean to store whether or not the user has the key */
     static boolean key;
 
     /** Constructor */
     public Bathroom(String name, String description, String objects) {
         super(name, description, objects);
+        key = false;
+        attempts = 0;
     }
     
     /**
@@ -23,7 +25,24 @@ public class Bathroom extends Rooms {
      * prints out the statement if user chooses to look in the medicine cabinet
      */
     public static void medicineCabinet(){
+        attempts = 0;
+        Scanner scan = new Scanner(System.in);
         System.out.println("You have tried looking in the cabinet but you cannot open it. Enter the safeword to access the medicine cabinet.");
+        while (attempts < 3){
+        String response = scan.nextLine();
+        if (response.equals("Honey")){
+        System.out.println("Yay! You have unlocked the medicine cabinet and have found a key! Find where it goes!\n");
+            key = true;
+            break;
+             } 
+             else if (attempts < 2){
+                System.out.println("Please try again!");
+            }
+            attempts += 1;
+        }
+        if (attempts == 3){
+            System.out.println("Sorry, too many attempts. Find the code and try again!");
+        }
     }
 
     /**
@@ -37,14 +56,14 @@ public class Bathroom extends Rooms {
      * prints out different door statements depending on if you have the key or not
      */
     public static void door(){
-        // System.out.println("You need a key to open the door. Open it using the key.");       
-        if (key = true){
+        if (key == true){
          System.out.println("Congrats! You've completed the Escape Room!\n");
         }
-         if (key = false){
+         if (key == false){
              System.out.println("Sorry, you need the key! Go find the key!\n");
          }
-     }
+     }    
+
 
     /**
      * prints inventory when you select inventory
@@ -60,12 +79,14 @@ public class Bathroom extends Rooms {
         System.out.println("Remember, you need a codeword to open the medicine cabinet. The word can be found somewhere gross!");
     }
 
+     /**
     /**
      * prints quit statement to end game if user chooses to
      */
     public static void quit(){
-        System.out.println("You have quit the came. We hope you can come back again to play!");
+        System.out.println("You have quit the game. We hope you can come back again to play!");
     }
+
 
     /**
      * prints the safe statement and will ask you for the code and if you have the safe code, you can tell safe and it will give you the key
@@ -149,13 +170,9 @@ public class Bathroom extends Rooms {
         case 8: quit();
                 System.exit(1);
         }
-        wToContinue(scan);
-
-
-
-   }
-
+            wToContinue(scan);
     }
 
 
+    }
 }
