@@ -35,7 +35,7 @@ public class Bedroom extends Rooms {
     private static void closet(){
         attempts = 0;
         Scanner scan = new Scanner(System.in);
-        System.out.println("There is a locked box! You need a code to open the lock.");
+        System.out.println("There is a locked box! You tried to open it, but couldn't. It asks you for a code. You have three tries to guess it right.");
         while (attempts < 3){
             String response = scan.nextLine();
             if (response.equals("UpUpDown")){
@@ -83,27 +83,7 @@ public class Bedroom extends Rooms {
      * prints quit statement to end game if user chooses to
      */
     public static void quit(){
-        System.out.println("You have quit the came. We hope you can come back and play again!");
-    }
-
-    public static void safe(){
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Enter the passcode to unlock the safe and get the key!\n");
-        int response = scan.nextInt();        
-        while (response == 420){
-        if (response == 420 || attempts < 3){
-           System.out.println("Yay! You have unlocked the safe and now have the key!\n");
-           break;
-       }    
-
-         while (response != 123 || attempts < 3) {
-               System.out.println("Wrong code, try again!\n");
-               attempts += 1;
-          if(attempts > 3) {
-               System.out.println("Too many attempts! Try and find the code and come back!\n");
-               break;
-           } }
-       }
+        System.out.println("You have quit the room. We hope you can come back and play again!");
     }
 
     /**
@@ -126,15 +106,18 @@ public class Bedroom extends Rooms {
          + "1. Look in the bed\n"
          + "2. Look in the bookshelf\n"
          + "3. Look in the closet\n"
-         + "4. Open the safe\n"
-         + "5. Open the door\n"
-         + "6. Look through inventory\n"
-         + "7. Get help\n"
-         + "8. Quit game\n");
+         + "4. Open the door\n"
+         + "5. Look through inventory\n"
+         + "6. Get help\n"
+         + "7. Quit room\n");
      }
 
-
-    public static void main(String[] args) {            
+    /**
+     * Controls the option menu through the while loops and allows access to the information in the Escape Room class
+     * @param scan creates scanner
+     * @param answer asks for user input on what option you choose
+     */
+    public static int BedRoomRoom() {            
 
         while(true){
         menu();
@@ -147,26 +130,31 @@ public class Bedroom extends Rooms {
             scan.nextLine();
         }
 
-        switch(answer) {
 
-        case 1: bed();
-                break;
-        case 2: bookshelf();
-                break;
-        case 3: closet();
-                break;
-        case 4: safe();;
-                break;
-        case 5: door();
-                break;
-        case 6: printInventory();
-                break;
-        case 7: help();
-                break;
-        case 8: quit();
-                System.exit(1);
+        while (answer < 9 || answer > 1)
+        {
+            switch(answer) 
+            {
+
+                case 1: bed();
+                        break;
+                case 2: bookshelf();
+                        break;
+                case 3: closet();
+                        break;
+                case 4: door();
+                        break;
+                case 5: printInventory();
+                        break;
+                case 6: help();
+                        break;
+                case 7: quit();
+                        return 1;
+            }
+            wToContinue(scan);
+            menu();
+            answer = scan.nextInt();
         }
-        wToContinue(scan);
 
 
     }

@@ -27,7 +27,7 @@ public class Bathroom extends Rooms {
     public static void medicineCabinet(){
         attempts = 0;
         Scanner scan = new Scanner(System.in);
-        System.out.println("You have tried looking in the cabinet but you cannot open it. Enter the safeword to access the medicine cabinet.");
+        System.out.println("You have tried looking in the cabinet but you cannot open it. Enter the safeword to access the medicine cabinet. You have three tries.");
         while (attempts < 3){
         String response = scan.nextLine();
         if (response.equals("Honey")){
@@ -84,7 +84,7 @@ public class Bathroom extends Rooms {
      * prints quit statement to end game if user chooses to
      */
     public static void quit(){
-        System.out.println("You have quit the game. We hope you can come back again to play!");
+        System.out.println("You have quit the room. We hope you can come back again to play!");
     }
 
     /**
@@ -110,40 +110,60 @@ public class Bathroom extends Rooms {
          + "4. Open the door\n"
          + "5. Look through inventory\n"
          + "6. Get help\n"
-         + "7. Quit game\n");
+         + "7. Quit room\n");
      }
 
-
-    public static void main(String[] args) {            
+    /**
+     * Controls the option menu through the while loops and allows access to the information in the Escape Room class
+     * @param scan creates scanner
+     * @param answer asks for user input on what option you choose
+     */
+    public static int BathroomRoom() {            
 
         while(true){
         menu();
         Scanner scan = new Scanner(System.in);
         int answer = scan.nextInt();
-        //requires you to pick one of the annswer options, can't pick another number 
+        //requires you to pick one of the answer options, can't pick another number 
         while(answer > 9 || answer < 1) {
             System.out.println("Please pick one of the options.");
             answer = scan.nextInt();
             scan.nextLine();
         }
-        switch(answer) {
+        
 
-        case 1: shower();
-                break;
-        case 2: medicineCabinet();
-                break;
-        case 3: toiletSeat();;
-                break;
-        case 4: door();
-                break;
-        case 5: printInventory();
-                break;
-        case 6: help();
-                break;
-        case 7: quit();
-                System.exit(1);
-        }
+        while (answer < 7 || answer > 1)
+        {
+            switch(answer) 
+            {
+
+                case 1: shower();
+                        break;
+                case 2: medicineCabinet();
+                        break;
+                case 3: toiletSeat();;
+                        break;
+                case 4: door();
+                        break;
+                case 5: printInventory();
+                        break;
+                case 6: help();
+                        break;
+                case 7: quit();
+                        return 1;
+            }
+
             wToContinue(scan);
+
+            menu();
+            answer = scan.nextInt();
+            
+            while(answer > 9 || answer < 1) {
+                System.out.println("Please pick one of the options.");
+                answer = scan.nextInt();
+                scan.nextLine();
+            }
+        }
     }
 
 
