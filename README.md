@@ -9,7 +9,7 @@
  - Completed `rubric.md`
 
 ##Design Justification
-We have three rooms. The office, bedroom, and bathroom. All are connected and the user can travel to any room in the beginning and after they complete the one they choose they can go to either of the two rooms aftwerwards. We chose this so the user can have more freedom in the direction of the game. An alternative design was to have the user go to rooms in a chronological order.
+We have three rooms. The office, bedroom, and bathroom. All are connected and the user can travel to any room in the beginning and after they complete the one they choose they can go to either of the two rooms aftwerwards. We chose this so the user can have more freedom in the direction of the game. An alternative design was to have the user go to rooms in a chronological order. But we didn't go with this model because we found it to be more constricting for the user and not as engaging.
 
   
 ## Additional Reflection Questions
